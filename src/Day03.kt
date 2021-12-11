@@ -22,14 +22,14 @@ fun main() {
 
     fun part2(input: List<String>): Int {
 
-        val oxygen = (0..input.first().length).foldIndexed(input) {index, acc, _ -> if(1 == acc.size) acc else
+        val oxygen = (0 until input.first().length).foldIndexed(input) { index, acc, _ -> if(1 == acc.size) acc else
             acc.filter { s -> s[index] == if(
                 acc.filter { '0' == it[index] }.size <= acc.filter {'1' == it[index] }.size) '1' else '0'
         }}
             .first()
             .map { if (it == '0') 0 else 1 }
             .reduce { acc, s -> acc * 2 + s }
-        val co2 = (0..input.first().length).foldIndexed(input) {index, acc, _ -> if(1 == acc.size) acc else
+        val co2 = (0 until input.first().length).foldIndexed(input) { index, acc, _ -> if(1 == acc.size) acc else
             acc.filter { s -> s[index] == if(
                 acc.filter { '0' == it[index] }.size <= acc.filter {'1' == it[index] }.size) '0' else '1'
         }}
