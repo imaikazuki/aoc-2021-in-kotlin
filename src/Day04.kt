@@ -34,15 +34,14 @@ fun main() {
             .map { nth -> (0 until cols).map { col -> rowBoards[(nth)*cols + col] }}
             .map { board -> board.map { it.trim().replace("  ", " ").split(" ").map { s -> s.toInt() }}}
 
-        val tmp00 = (numbers.indices)
+        return (numbers.indices)
             .mapIndexed { index, _ -> numbers.subList(0, index + 1) }
             .map { nbs -> boards
                 .filter { ! doesWin(nbs.subList(0, nbs.size-1), it) }
                 .map { board -> score(nbs, board) * nbs.last() }
                 .filter { 0 < it } }
-        val tmp10 = tmp00   .last { it.isNotEmpty() }
-        val tmp20 = tmp10    .last()
-        return tmp20
+            .last { it.isNotEmpty() }
+            .last()
     }
 
     check(!doesWin(listOf(0), listOf(
