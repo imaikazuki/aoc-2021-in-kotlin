@@ -15,7 +15,7 @@ fun main() {
         val min = positions.minOf { it }
         val max = positions.maxOf { it }
         return (min..max)
-            .map { goal -> positions.map { (0..abs(goal - it)).sumOf { n -> n } }.sumOf { it } }
+            .map { goal -> positions.map { abs(goal - it) * (abs(goal - it)+1) / 2 }.sumOf { it } }
             .minOf { it }
     }
 
