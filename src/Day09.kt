@@ -43,8 +43,9 @@ fun main() {
         val basinList = MutableList(basinIdCounter) { 0 }
         basins
             .flatten()
+            .filter { 0 != it }
             .forEach { basinList[it]++ }
-        return basinList.sorted().reversed().subList(1, 4).fold(1) { acc, i -> acc * i }
+        return basinList.sorted().reversed().subList(0, 3).fold(1) { acc, i -> acc * i }
     }
 
     // test if implementation meets criteria from the description, like:
